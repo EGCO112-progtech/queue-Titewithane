@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
     printf("There is %d people left in the queue\n", q.size);
   else
     printf("There are %d people left in the queue\n", q.size);
-  printf("Cancle all the order\n");
+
 
   while (q.size > 0)
     dequeue_struct(&q);
