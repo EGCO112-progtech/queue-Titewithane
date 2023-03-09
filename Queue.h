@@ -4,48 +4,53 @@ typedef struct {
 }Queue;
 
 
-void enqueue_struct(Queue* q, int x,int y){
+void enqueue_struct(Queue* q, int x , int y){
   Node *new_node=(Node*) malloc(sizeof(Node));
 if(new_node){ 
-  new_node->data=x;
+  /*Finish enqueue */
+  new_node->order=x;
   new_node->qty=y;
   new_node->nextPtr=NULL;
-if(q->headPtr==NULL) 
-  q->headPtr=new_node;
-else 
-  q->tailPtr->nextPtr=new_node;
+  
+  
+  if(q->headPtr)
+  {(q->tailPtr)->nextPtr=new_node;} 
+  else {q->headPtr=new_node;}
   q->tailPtr=new_node;
-  q->size++;
-  /*Finish enqueue */
- }
+  (q->size)++;
+  
+ }printf("Order is %d\n",x);
 }
 
 
 int dequeue_struct(Queue *q){
    NodePtr t=q->headPtr;
-    int price;
-   if(q->size>0){
-     switch(t->data){
-       case 1: printf("Ramen\n"); 
-          price=100*t->qty;
-          break;
-       case 2: printf("Somtum\n");
-          price=200*t->qty;
-          break;
-       case 3: printf("KFC\n");
-          price=300*t->qty; 
-          break;
-       default: printf("No food\n");
-          price = 0;
-          break;
-     }
-  q->headPtr=t->nextPtr;
-     if(q->headPtr==NULL)
-       q->tailPtr=NULL;
-     q->size--;
-     free(t);
+  int p;
+   if(t){
+     //int value= t->data;
+     switch(t->order)
+       {
+         case 1 :printf("The order is Pizza ");p=300*t->qty;  break;
+         case 2 :printf("The order is hamburger ");p=200*t->qty;  break;
+         case 3 :printf("The order is spaghetti "); p=100*t->qty;break;
+         default: printf("No Food\n");p=0;break;
+
+       }
+   
+       
      
-   return price;
+     
+     
+     /*Finish dequeue */ 
+    
+     
+     q->headPtr=(q->headPtr)->nextPtr;
+     if(!(q->headPtr)) q->tailPtr=NULL;
+     (q->size)--;
+     free(t);
+     return p;
+      
+  
    }
    printf("Empty queue");
    return 0;
