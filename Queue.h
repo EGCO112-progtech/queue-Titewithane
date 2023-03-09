@@ -30,8 +30,8 @@ int dequeue_struct(Queue *q){
      //int value= t->data;
      switch(t->order)
        {
-         case 1 :printf("The order is Pizza ");p=300*t->qty;  break;
-         case 2 :printf("The order is hamburger ");p=200*t->qty;  break;
+         case 1 :printf("The order is KFC ");p=300*t->qty;  break;
+         case 2 :printf("The order is Ramen ");p=200*t->qty;  break;
          case 3 :printf("The order is spaghetti "); p=100*t->qty;break;
          default: printf("No Food\n");p=0;break;
 
